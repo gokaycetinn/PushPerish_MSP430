@@ -1,87 +1,111 @@
-# CENG 329 Project: Push or Perish
+# 🎮 CENG 329 Project: Push or Perish
 
-## Team Members
-- **Hasan Emre Usta** (202111301)  
-- **Gökay Çetinakdoğan** (202111050)  
-- **Kayra Dalçık** (202111023)
+A competitive reaction-based game built using the MSP430 microcontroller, a 7-segment display, buttons, and LEDs. Two players compete by strategically timing their button presses according to countdown logic.
 
 ---
 
-## Objective
-The objective of this project is to design and implement a competitive game using an MSP430 microcontroller, a 7-segment display, two buttons, and two LEDs. The game, *"Push or Perish,"* requires players to press buttons strategically to win based on predefined rules.
+## 👥 Team Members
+
+- Hasan Emre Usta – 202111301  
+- Gökay Çetinakdoğan – 202111050  
+- Kayra Dalçık – 202111023  
 
 ---
 
-## Project Specifications
+## 🎯 Objective
 
-### Countdown Mechanism
-- The 7-segment display counts down from `3` to `0`, decreasing by 1 every second.
-- When the countdown reaches `0`, the display shows a `"-"` (dash) to indicate the game has ended.
+The objective of this project is to design and implement a competitive game using:
 
-### Win Conditions
-1. If a player presses their button before the countdown reaches `0`, the other player automatically wins, and their corresponding LED lights up.
-2. If both players wait until the countdown reaches `0`, the LED of the first player to press their button will light up.
+- MSP430 Microcontroller
+- 7-segment display
+- Two buttons
+- Two LEDs
 
-### Game Restart
-- After one player wins, the game pauses for 3 seconds before automatically restarting for a new round.
+The game, **"Push or Perish,"** requires players to press buttons strategically to win based on predefined rules.
 
 ---
 
-## Components Used
-- **1 x MSP430 Microcontroller**  
-- **1 x 7-Segment Display**  
-- **2 x Buttons** (for Player 1 and Player 2)  
-- **2 x LEDs** (one for each player)
+## 🛠 Project Specifications
+
+### ⏳ Countdown Mechanism
+
+- 7-segment display counts down from **3 to 0** (1-second interval).
+- When countdown reaches **0**, display shows a dash **“-”** to indicate game end.
+
+### 🏁 Win Conditions
+
+- If a player presses **before** countdown ends → **opponent wins**, and their LED lights up.
+- If both wait until countdown ends → **first to press** after 0 wins (their LED lights up).
+
+### 🔄 Game Restart
+
+- After a round ends, system **waits 3 seconds** then **automatically restarts**.
 
 ---
 
-## Implementation Details
+## 🔧 Components Used
 
-### Hardware Setup
-1. **LEDs**:  
-   - **Red LED (Player 1)**: Configured as output (`P1.0`).  
-   - **Green LED (Player 2)**: Configured as output (`P2.1`).
-
-2. **Buttons**:  
-   - **Player 1 Button**: Configured as input (`P1.3`) with a pull-up resistor.  
-   - **Player 2 Button**: Configured as input (`P2.3`) with a pull-up resistor.
-
-3. **7-Segment Display**:  
-   - Pins configured for digital I/O.  
-   - Segments controlled via `P1OUT` and `P2OUT` registers.
+- 1 × MSP430 Microcontroller  
+- 1 × 7-Segment Display  
+- 2 × Buttons (Player 1 & Player 2)  
+- 2 × LEDs (1 per player)
 
 ---
 
-### Software Flow
-1. **Countdown Display**:  
-   - The 7-segment display cycles through numbers `3` to `0` using subroutines. Each subroutine activates the appropriate segments for the digit and then calls the delay function.  
-   - At `0`, a dash `"-"` is displayed to indicate the end of the countdown.
+## 💻 Implementation Details
 
-2. **Button Detection**:  
-   - The program constantly monitors the button states.  
-   - Logic determines whether the press occurred before or after the countdown reaches `0`.
+### 🔌 Hardware Setup
 
-3. **LED Control**:  
-   - If a button is pressed prematurely, the opponent's LED lights up.  
-   - If a button is pressed after the countdown, the corresponding player's LED lights up.
+**LEDs**  
+- Player 1 (Red): `P1.0` (Output)  
+- Player 2 (Green): `P2.1` (Output)  
 
-4. **Game Reset**:  
-   - A 3-second delay is triggered before restarting the game.
+**Buttons**  
+- Player 1: `P1.3` (Input with pull-up)  
+- Player 2: `P2.3` (Input with pull-up)  
+
+**7-Segment Display**  
+- Controlled via `P1OUT` and `P2OUT` registers  
+- Segments configured using digital I/O  
+
+### 🧠 Software Flow
+
+**Countdown Logic**  
+- Each digit (3 to 0) shown using separate subroutines  
+- After 0, display shows “-”  
+
+**Button Detection**  
+- Constant polling of button states  
+- Checks if button was pressed before or after countdown ends  
+
+**LED Control**  
+- Premature press → opponent's LED ON  
+- Timely press → pressing player’s LED ON  
+
+**Game Reset**  
+- 3-second delay  
+- Countdown and game logic restart
 
 ---
 
-## Results and Observations
-- The system successfully implements the *"Push or Perish"* game with the specified rules.
-- The countdown and button press detection work as intended.
-- LEDs and the 7-segment display are synchronized with game logic.
+## ✅ Results & Observations
+
+- Game logic works as intended  
+- Countdown, button input, and LED output are properly synchronized  
+- Players engage in real-time competition  
 
 ---
 
-## Challenges
-- Fine-tuning the delay loops for consistent timing.  
-- Debugging hardware connections for the 7-segment display.
+## ⚠️ Challenges
+
+- Precise delay calibration for accurate countdown  
+- Debugging hardware wiring for 7-segment display
 
 ---
 
-## Video Demonstration
+## 📺  Video Demonstration
+
+  
 [Watch the Gameplay on YouTube](https://www.youtube.com/shorts/hu23h-f-BZg)
+
+
